@@ -35,7 +35,7 @@ A premium, interactive web experience demonstrating advanced scroll animations, 
 1. Clone the repository:
    ```bash
    git clone <repository-url>
-   cd home-assiment
+   cd scroll-animation
    ```
 
 2. Install dependencies:
