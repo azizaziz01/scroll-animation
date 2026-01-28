@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-primary: #e7d7c1;
+  --color-bg-secondary: #dfd1bd;
+  --color-bg-tertiary: #d7c9b3;
+  
+  --color-accent: #c0392b;
+  --color-accent-light: #e74c3c;
+  --color-accent-dark: #962d22;
+  
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* Global Styles */
+@layer base {
+  :root {
+    --app-bg: #e7d7c1;
+    --app-text: #232527;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--app-bg);
+    color: var(--app-text);
+    /* Improve text rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: var(--font-body);
+    @apply antialiased overflow-x-hidden transition-colors duration-500 ease-in-out text-[#232527];
+    /* Prevent layout shift during animations */
+    overflow-anchor: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-bold;
+    /* Improve heading rendering */
+    text-wrap: balance;
+  }
+
+  /* Improve image rendering */
+  img, video {
+    content-visibility: auto;
+  }
+
+  /* Focus visible styles for accessibility */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  /* Remove default focus styles for mouse users */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-linear-to-r from-accent to-accent-dark;
+  }
+
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+
+  /* GPU acceleration helpers */
+  .gpu-accelerate {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+
+  .gpu-accelerate-off {
+    will-change: auto;
+    transform: none;
+  }
+
+  /* Performance optimization for scroll containers */
+  .scroll-container {
+    contain: paint layout;
+    overflow: hidden;
+  }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Smooth scrolling optimization */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+    overscroll-behavior: contain;
+  }
+
+  /* Content visibility for performance */
+  .lazy-render {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 500px;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-bg-secondary;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-bg-tertiary rounded-full hover:bg-accent;
+  transition: background-color 0.2s ease;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-bg-tertiary) var(--color-bg-secondary);
+}
+
+/* Animation performance hints */
+.pinned-section {
+  contain: layout style;
+}
+
+.scroll-image {
+  contain: paint;
+  will-change: transform, opacity;
+}
+
+/* Optimize transform animations */
+.transform-gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Projects hover effect */
+.projects {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.projects:hover {
+  transform: scale(1.02) translateZ(0);
+}
+
+/* Selection styles */
+::selection {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+::-moz-selection {
+  background-color: var(--color-accent);
+  color: white;
+}
