@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { IMAGES, type WorkImage } from '../data/works';
+import { IMAGES } from '../data/works';
 
 gsap.registerPlugin(ScrollTrigger);
 
