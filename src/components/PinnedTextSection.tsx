@@ -51,10 +51,12 @@ const PinnedTextSection: React.FC = () => {
 
       imageElements.forEach((img, index) => {
         const speed = IMAGES[index]?.speed || 0.3;
-        const direction = index % 2 === 0 ? 1 : -1;
-        const yDistance = 600 * speed * direction;
+        // Make all images start from the bottom (positive y) and move up (negative y)
+        // Add an extra offset to ensure the text is visible first
+        const yStart = 1000 * speed + 200; 
+        const yEnd = -600 * speed;
         
-        tl.fromTo(img, { y: -yDistance }, { y: yDistance, ease: 'none' }, 0);
+        tl.fromTo(img, { y: yStart }, { y: yEnd, ease: 'none' }, 0);
       });
     }, sectionRef);
 
@@ -68,7 +70,7 @@ const PinnedTextSection: React.FC = () => {
     <section
       ref={sectionRef}
       id="work"
-      className="relative mt-24 md:mt-44 min-h-[150vh] md:min-h-[300vh]"
+      className="relative mt-0 min-h-[150vh] md:min-h-[340vh]"
       style={{ contain: 'paint layout' }}
     >
       {/* Sticky Text */}
@@ -86,15 +88,27 @@ const PinnedTextSection: React.FC = () => {
           return (
             <div
               key={index}
-              className={`scroll-image absolute overflow-hidden rounded-lg ${image.position} ${depthStyle.size} ${depthStyle.opacity} ${depthStyle.zIndex} ${image.shadow || ''}`}
+              className={`scroll-image absolute ${image.position} ${depthStyle.zIndex} group rounded-lg overflow-hidden ${depthStyle.size} ${depthStyle.opacity} ${image.shadow || ''}`}
             >
               <img
                 src={image.url}
-                alt={`Project ${index + 1}`}
-                className={`w-full h-full object-cover ${depthStyle.blur}`}
+                alt={image.title}
+                className={`w-full h-full object-cover ${depthStyle.blur} transition-transform duration-700 group-hover:scale-110`}
                 loading="lazy"
                 decoding="async"
               />
+              
+              {/* Overlay Gradient */}
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-100 transition-opacity duration-500" />
+              
+              {/* Title */}
+              <h3 
+                className={`absolute z-40 bottom-4 left-4 font-display font-medium tracking-widest uppercase text-white 
+                translate-y-0 opacity-100 transition-all duration-500
+                ${image.depth === 'far' ? 'text-[10px]' : 'text-xs md:text-sm'}`}
+              >
+                {image.title}
+              </h3>
             </div>
           );
         })}

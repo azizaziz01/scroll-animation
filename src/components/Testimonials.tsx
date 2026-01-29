@@ -37,7 +37,7 @@ const TESTIMONIALS: Testimonial[] = [
     author: 'Dinesh Dave',
     role: 'CO-FOUNDER & CREATIVE DIRECTOR',
     company: 'WORK IS PLAY',
-    avatar: '/api/placeholder/64/64',
+    avatar: '',
   },
   {
     id: 'testimonial-2',
@@ -45,7 +45,7 @@ const TESTIMONIALS: Testimonial[] = [
     author: 'Max Trudel',
     role: 'DIRECTOR / DOP',
     company: 'SIDE HIT FILMS',
-    avatar: '/api/placeholder/64/64',
+    avatar: '',
   },
   {
     id: 'testimonial-3',
@@ -53,7 +53,7 @@ const TESTIMONIALS: Testimonial[] = [
     author: 'Tj Walker',
     role: 'HEAD OF PRODUCTION',
     company: 'BOOMBOX',
-    avatar: '/api/placeholder/64/64',
+    avatar: '',
   },
   {
     id: 'testimonial-4',
@@ -61,7 +61,7 @@ const TESTIMONIALS: Testimonial[] = [
     author: 'Charles Lacasse',
     role: 'FOUNDER',
     company: 'WE SCALE IT',
-    avatar: '/api/placeholder/64/64',
+    avatar: '',
   },
   {
     id: 'testimonial-5',
@@ -69,7 +69,7 @@ const TESTIMONIALS: Testimonial[] = [
     author: 'Tj Walker',
     role: 'HEAD OF PRODUCTION',
     company: 'BOOMBOX',
-    avatar: '/api/placeholder/64/64',
+    avatar: '',
   },
   {
     id: 'testimonial-6',
@@ -77,7 +77,7 @@ const TESTIMONIALS: Testimonial[] = [
     author: 'Charles Lacasse',
     role: 'FOUNDER',
     company: 'WE SCALE IT',
-    avatar: '/api/placeholder/64/64',
+    avatar: '',
   },
 ];
 
